@@ -1,15 +1,15 @@
 import { pool } from '../config/database.js';
 
-const getCars = async (req, res) => {
+export const getCars = async (req, res) => {
     try {
         const results = await pool.query('SELECT * FROM cars ORDER BY id ASC');
-        res.status(200).json(results.row);
+        res.status(200).json(results.rows);
     } catch (error) {
         res.status(409).json( {error: error.message });
     }
 }
 
-const createCar = async (req, res) => {
+export const createCar = async (req, res) => {
     try {
         const { name, exterior, roof, wheels, interior, price } = req.body;
         const results = await pool.query(`
@@ -19,13 +19,13 @@ const createCar = async (req, res) => {
             [name, exterior, roof, wheels, interior, price]
         );
 
-        res.status(200).json(results.row[0]);
+        res.status(200).json(results.rows[0]);
     } catch (error) {
         res.status(409).json( { error: error.message } )
     }
 }
 
-const getCarById = async (req, res) => {
+export const getCarById = async (req, res) => {
     try {
         const selectQuery = `
             SELECT *
@@ -41,7 +41,7 @@ const getCarById = async (req, res) => {
     }
 }
 
-const updateCar = async (req, res) => {
+export const updateCar = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const { name, exterior, roof, wheels, interior, price } = req.body;
@@ -57,7 +57,7 @@ const updateCar = async (req, res) => {
     }
 }
 
-const deleteCar = async (req, res) => {
+export const deleteCar = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const results = await pool.query(`DELETE FROM gift WHERE id = $1`, [id]);
@@ -65,12 +65,4 @@ const deleteCar = async (req, res) => {
     } catch (error) {
         res.status(409).json( { error: error.message } )
     }
-}
-
-export default {
-    getCars,
-    createCar,
-    getCarById,
-    updateCar,
-    deleteCar
 }
