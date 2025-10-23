@@ -47,7 +47,7 @@ export const updateCar = async (req, res) => {
         const { name, exterior, roof, wheels, interior, price } = req.body;
         const results = await pool.query(`
             UPDATE cars SET name = $1, exterior = $2, roof = $3, wheels = $4, interior = $5, price = $6 
-            WHERE id = $8`,
+            WHERE id = $7 RETURNING *`,
             [name, exterior, roof, wheels, interior, price, id]
         );
 
