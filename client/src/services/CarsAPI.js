@@ -43,10 +43,10 @@ async function editCar(id, data) {
 async function deleteCar(id) {
     const response = await fetch(`${API_BASE_URL}/cars/${id}`, {
         method: 'DELETE',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json'}
     });
 
-    const result = await response.json();
+    const result = response;
     return result;
 }
 

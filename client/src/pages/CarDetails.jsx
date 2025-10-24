@@ -60,6 +60,18 @@ const CarDetails = () => {
         }
     }, [car])
 
+    const handleDelete = async (e) => {
+        e.preventDefault()
+        try {
+            const result = await CarsAPI.deleteCar(id)
+            window.location.href = '/customcars'
+            console.log('Car Deleted:', result)
+        } catch (err) {
+            console.error('Error updating car:', err)
+            alert('Failed to delete car.')
+        }
+      }
+
     return (
         <article className='car-information'>
             <div className='car-details-header'>
@@ -97,6 +109,7 @@ const CarDetails = () => {
 
             <div className='car-actions'>
                 <a href={`/edit/${car.id}`} role='button'>Edit Car</a>
+                <button onClick={handleDelete}>Delete</button>
                 <a href='/customcars' role='button'>Back to All Cars</a>
             </div>
         </article>

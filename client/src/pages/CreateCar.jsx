@@ -60,6 +60,7 @@ const CreateCar = () => {
       price: totalPrice
     }
     const result = CarsAPI.createCar(data);
+    window.location.href = '/customcars';
     console.log(result);
     } catch (error) {
       console.error(error.message);

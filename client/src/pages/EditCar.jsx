@@ -80,8 +80,8 @@ const EditCar = () => {
 
     try {
         const result = await CarsAPI.editCar(id, updatedCar)
+        window.location.href = '/customcars'
         console.log('Car updated:', result)
-        alert('Car updated successfully!')
     } catch (err) {
         console.error('Error updating car:', err)
         alert('Failed to update car.')
