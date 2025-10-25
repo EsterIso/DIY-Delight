@@ -40,7 +40,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-![Slide 1](DIYDelightDemog.gif)
+![Slide 1](DIYDelight1.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  GIF tool here
